@@ -7,13 +7,17 @@
 
 
 ## 安装python
+```
 opkg update && opkg install python3 python3-pip
+```
 ## 我的Openwrt环境
+```
 LuCI openwrt-24.10 branch 26.337.67860~daf821a
 luci-app-openvpn - 25.337.67860~daf821a - LuCI Support for OpenVPN
 luci-app-openvpn-client - 20250227-r5 - LuCI support for OpenVPN Client
 luci-app-openvpn-server - 2.0-r14 - LuCI support for OpenVPN Server
 luci-app-openvpn-server-client - 6.0-r4 - LuCI support for OpenVPN Server
+```
 
 <img width="1707" height="529" alt="image" src="https://github.com/user-attachments/assets/db9d08b8-e0e8-4d43-871c-20ab162764fe" />
 
