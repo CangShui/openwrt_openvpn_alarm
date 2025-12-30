@@ -6,3 +6,7 @@
 - 📱 **Telegram推送**
 
 <img width="1707" height="529" alt="image" src="https://github.com/user-attachments/assets/db9d08b8-e0e8-4d43-871c-20ab162764fe" />
+
+
+
+<img width="950" height="730" alt="image" src="https://github.com/user-attachments/assets/5f5d6c55-36bf-48be-b2de-bc543dda320c" />
