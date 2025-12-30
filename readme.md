@@ -19,7 +19,7 @@ luci-app-openvpn-server - 2.0-r14 - LuCI support for OpenVPN Server
 luci-app-openvpn-server-client - 6.0-r4 - LuCI support for OpenVPN Server
 ```
 
-##注册服务
+## 注册服务
 ```
 cat > /etc/init.d/openvpn_alarm << 'EOF'
 #!/bin/sh /etc/rc.common
