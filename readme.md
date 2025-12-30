@@ -19,6 +19,75 @@ luci-app-openvpn-server - 2.0-r14 - LuCI support for OpenVPN Server
 luci-app-openvpn-server-client - 6.0-r4 - LuCI support for OpenVPN Server
 ```
 
+##注册服务
+```
+cat > /etc/init.d/openvpn_alarm << 'EOF'
+#!/bin/sh /etc/rc.common
+
+START=99
+STOP=10
+APP="/usr/bin/python3 /root/vpn_alarm.py"
+PIDFILE="/var/run/openvpn_alarm.pid"
+
+start() {
+    if [ -f "$PIDFILE" ] && kill -0 $(cat "$PIDFILE"); then
+        echo "$APP 已在运行"
+        return 0
+    fi
+    
+    echo "启动 OpenVPN 监控..."
+    nohup $APP > /dev/null 2>&1 &
+    echo $! > $PIDFILE
+    echo "PID: $(cat $PIDFILE)"
+}
+
+stop() {
+    if [ -f "$PIDFILE" ]; then
+        kill $(cat $PIDFILE)
+        rm -f $PIDFILE
+        echo "已停止 OpenVPN 监控"
+    fi
+}
+
+restart() {
+    stop
+    sleep 2
+    start
+}
+EOF
+```
+```
+chmod +x /etc/init.d/openvpn_alarm
+/etc/init.d/openvpn_alarm enable
+/etc/init.d/openvpn_alarm start
+
+```
+
+
+
+
+
+
+## 服务命令
+```
+# 启动
+/etc/init.d/openvpn_alarm start
+
+# 停止
+/etc/init.d/openvpn_alarm stop
+
+# 重启
+/etc/init.d/openvpn_alarm restart
+
+# 开机自启状态
+/etc/init.d/openvpn_alarm enabled && echo "已启用" || echo "未启用"
+
+# 查看进程
+ps | grep vpn_alarm.py
+cat /var/run/openvpn_alarm.pid
+```
+
+
 <img width="1707" height="529" alt="image" src="https://github.com/user-attachments/assets/db9d08b8-e0e8-4d43-871c-20ab162764fe" />
 
 
